@@ -210,7 +210,8 @@ def kmeans(instances, k, initCentroids=None, maxItr=-1):
     withinss = computeWithinss(clusters, centroids)
     prev_withinss = 1e9
     start_time = time.time()
-    while(centroids_distance(centroids, prevCentroids) > 0.00001 or iteration == 0):
+    while(prev_withinss > withinss):
+        #(centroids_distance(centroids, prevCentroids) > 0.00001 or iteration == 0):
         iteration += 1
         #print(centroids, prevCentroids, centroids_distance(centroids, prevCentroids))
         clusters = assignAll(instances, centroids)
